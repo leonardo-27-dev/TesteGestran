@@ -1,0 +1,69 @@
+<h1 class="titulo">Formulário de Cadastro</h1>
+
+<form [formGroup]="formulario" class="body">
+  <mat-form-field class="input">
+    <input matInput placeholder="Nome" formControlName="nome" pattern="[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$"/>
+    <mat-error *ngIf="formulario.get('nome').invalid">
+      O nome é obrigatório e deve ter entre 5 e 50 caracteres.
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field class="input">
+    <input
+      matInput
+      placeholder="CEP"
+      formControlName="cep"
+      (blur)="buscarEndereco()"
+      mask="00000-000"
+    />
+    <mat-error *ngIf="formulario.get('cep').invalid">
+      O CEP é obrigatório e deve conter apenas números.
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field class="input">
+    <input matInput placeholder="Cidade" formControlName="cidade" />
+    <mat-error *ngIf="formulario.get('cidade').invalid">
+      A cidade é obrigatória.
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field class="input">
+    <input matInput placeholder="Bairro" formControlName="bairro" />
+    <mat-error *ngIf="formulario.get('bairro').invalid">
+      O bairro é obrigatório.
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field class="input">
+    <input matInput placeholder="Logradouro" formControlName="logradouro" />
+    <mat-error *ngIf="formulario.get('logradouro').invalid">
+      O logradouro é obrigatorio.
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field class="input">
+    <input matInput placeholder="Número" mask="0000000" formControlName="numero" />
+    <mat-error *ngIf="formulario.get('numero').invalid">
+      O logradouro é obrigatorio.
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field class="input">
+    <input matInput placeholder="Complemento" formControlName="complemento" />
+    <mat-error *ngIf="formulario.get('complemento').invalid">
+      O logradouro é obrigatorio.
+    </mat-error>
+  </mat-form-field>
+  <br />
+  <div class="button">
+      <button class="style-button" mat-fab extended (click)="onSubmit()" color="primary">
+          Salvar
+        </button>
+        <br>
+        <br>
+        <button class="style-button" mat-fab extended routerLink="/" color="primary">
+          Voltar
+        </button>
+    </div>
+</form>
